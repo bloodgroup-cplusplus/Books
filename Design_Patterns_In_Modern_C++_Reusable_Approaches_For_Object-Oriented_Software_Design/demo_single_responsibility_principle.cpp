@@ -9,6 +9,7 @@ And a number of entries. you could model it as follows:
 #include<sstream>
 #include<string>
 #include<vector>
+#include<boost/lexical_cast.hpp>
 struct Journal
 {
     std::string title;

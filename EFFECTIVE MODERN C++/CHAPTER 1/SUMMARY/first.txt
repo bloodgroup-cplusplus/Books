@@ -1,1 +1,6 @@
 
+Type deduction for templates is the basis for one of modern C++'s most compelling features:
+AUTO
+When the template type deduction rules are applied in the context of auto, they
+sometimes seem less intuitive than when they're applied to templates.
+It's good to understand the aspects of template type deduction that auto builds on.

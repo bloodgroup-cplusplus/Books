@@ -1,1 +1,35 @@
+Working On Legacy Code
+Re-reading Code Multiple Times to get the part you need
+Hard to Understand what a method does
+Spending a lot of time to fix a minor bug
+You spend more time reading than writing code
 
+
+
+Working on a Startup Product
+In charge of the development Process
+Constantly adding new features
+No formal process
+Very dynamic environment, not time to worry about code stucture
+What is it like to go back to your code after 2 years
+
+
+The Purpose of Solid Design Principles
+* To make the code more maintainable
+* To make it easier to quickly extend the system with new funcionality without 
+* breaking the existing ones
+* To make the code easier to read and understand, thus spend less time figuring out what it does and more time actually developing the solution.
+* Introduced by Robert Martin( Uncle Bob) named by Micheal Feathers
+
+
+s=SINGLE RESPONSIBILITY PRINCIPLE
+
+  "A class should have one, and ony one, reason to change"
+  
+  
+ Single Responsibility Principle
+  * A class should only be responsible for one thing.
+  * There's a place for everyting and everytihng is in its place
+  * Find one reason to change and take everything out of the class.
+  * Very Precise names for many small classes > generic names for large classes
+  

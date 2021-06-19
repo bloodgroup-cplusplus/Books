@@ -45,7 +45,7 @@ s=SINGLE RESPONSIBILITY PRINCIPLE
       $validated Data= 
 ........................... this is a laravel code see it on you tube ...................
 
-OPEN/ CLOSED PRINCIPLE
+O = OPEN/ CLOSED PRINCIPLE
 * An entity should be open for extension but closed for modification
 * Extend functionality by adding new code instead of changing existing code
 * Seperate the behaviours, so the system can easily be extended, but never broken.

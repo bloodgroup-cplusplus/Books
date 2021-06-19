@@ -32,4 +32,95 @@ s=SINGLE RESPONSIBILITY PRINCIPLE
   * There's a place for everyting and everytihng is in its place
   * Find one reason to change and take everything out of the class.
   * Very Precise names for many small classes > generic names for large classes
+  check out the  cppfile single_responsibility_principle.cpp
   
+  /**
+    Store a newly created resource in storage.
+    @param \Illuminate\Http\Request $request
+    @param \App\User   $user
+    @return \Illuminate\Http\Response
+    
+    public function store( Request $request, User $user)
+    {
+      $validated Data= 
+........................... this is a laravel code see it on you tube ...................
+
+OPEN/ CLOSED PRINCIPLE
+* An entity should be open for extension but closed for modification
+* Extend functionality by adding new code instead of changing existing code
+* Seperate the behaviours, so the system can easily be extended, but never broken.
+* Goal: get to a point where you can never break the core of your system.
+*the goal is to get the system to a stable point
+* say we have a payment that handles payment processing and currently we have the support for
+* paypal and credit card and we have a method handling the payment processing.
+
+public function pay( Request $request)
+{
+    $payment=new Payment();
+    if($type=='credit')
+    {
+        $payment->payWithCreditCard();
+    }
+    
+    else
+    {
+        $payment->payWithPaypal();
+    }
+    
+ }
+ 
+ so what if we want to add new payment
+ 
+ now we have the payment class
+ 
+ class Payment
+ {
+    pubic function payWithCreditCard()
+    {
+        // logic for paying with credit card
+    }
+    
+    public function payWithPaypal()
+    {
+        // logic for paying with paypal
+    }
+    
+  }
+  // so if we want to extend it via wire transfers when we pay online
+  // so how add is  in the function pay we add one more else
+  // else
+      {
+            $payment->payWithWireTransfer();
+      }
+      
+      and in our payment class we add
+      
+      class Payment
+      {
+          public function payWithCreditCard()
+          {
+              // logic for paying with credit card
+           }
+           
+           public function payWithPaypal()
+            {
+                // logic for paying with paypal
+                
+             }
+             
+             
+           public function payWithWireTransfer()
+            {
+                  // logic for paying with wire transfer
+             }
+             
+         }
+         
+         
+         so if we add cupon payment we will add another e
+         lse if  again modify the payment class and so on and on and on ..
+         
+ *This is the point where we tend to violate the open source principle by making 
+ *Modifications here and there even though they seem unrelated, the change in one
+ *Function could cause a change in another.
+check out the second c++ example above its called open_closed.cpp   

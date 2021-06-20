@@ -1,3 +1,9 @@
+
+This article is derived from the youtube video
+https://www.youtube.com/watch?v=rtmFCcjEgEw check out the video for better refrence
+
+
+
 Working On Legacy Code
 Re-reading Code Multiple Times to get the part you need
 Hard to Understand what a method does
@@ -124,3 +130,13 @@ public function pay( Request $request)
  *Modifications here and there even though they seem unrelated, the change in one
  *Function could cause a change in another.
 check out the second c++ example above its called open_closed.cpp   
+..........................................................................................
+L= LISKOV SUBSTITUTION PRINCIPLE
+*Any derived class should be able to substitute its parent class without the consumer
+knowing it.
+* Every class that implements an interface, must be able to substitute any refrence
+throughout the code that implements that same interface
+* Every part of the code should get the expected result no matter what instance of a class
+you send to it, given it implements the same inteface.
+
+check_lsp.cpp for the example

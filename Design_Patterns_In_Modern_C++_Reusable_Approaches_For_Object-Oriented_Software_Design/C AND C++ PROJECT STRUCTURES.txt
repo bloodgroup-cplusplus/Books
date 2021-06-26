@@ -1,0 +1,82 @@
+
+ * MAKING LIBRARIES
+        * All the headers that are to be included are in the directory called INCLUDES
+        * Inside the includes we have the name of the project itself ( this is added to ensure modularity for the code)
+        * if we only include the header file one will not know from where the header is included so inorder to mantain modularity we need to use name of the project inside the include
+        * so "#include<name_of_the_project/header_file.h> " will make it modular
+        * if it's a header only library then they don't have the include folder
+        * Everything goes into the src
+        *Public Libraries go in the include
+        
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+*MAKING APPLICATIONS
+        * How to make the applications
+        * there are several ways of building the application.
+                * Folders Per class
+                * Folders per Section
+                * Pure Flat
+                * Headers For everything
+                        * One main cpp file
+                        * Single object rebuild flaw( long compile times for a  single change)
+        *Explaining each of these:
+                * So most of the people what they do is they have the project folder and inside the project folder they have the src file or source file 
+                * say we have a folder named as project mkdir project ... inside the project i.e., (cd project) we make a folder we make the source file( cd source)
+                * and inside the src file we carry out the use case for each of the following ways of building the application let's start with folders per class
+                * USING FOLDER PER CLASS
+                        * Say we want to make the folder. Our folder name is DATA so inside the source directory we have the data (mkdir data)
+                        * we will go to  the data ( cd data ) and inside the data we make the required folder cpp file and the header file (data.cpp and data.h)
+                        * we can also make these header file(s) and source file(s) using the command New-Item followed by what we are making New-Item data.cpp or New-Item data.h
+                        * now we now that each of the project file contains the main so where do we put our main in this case.
+                        * In this case we put our main outside the data folder inside the source folder of the project.
+                        *
+                ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                * PURE FLAT
+                        *In the flat structure is that instead of making the Data folder inside the source what we do is we make the header file directly
+                        * so inside our project folder we have the source folder and inside the source folder this time we don't have the folder,instead we 
+                        * directly have the required classes and header files. So inside the source folder we have data.cpp , data.h and main.cpp
+                        * but the disadvantage is that we end up with a giant list of source files and headers in our project but that is still ok..
+                        * 
+                        *
+        ------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                *HEADERS FOR EVERYTHING
+                        *Advantages of doing in the folder per class and folders per section is that each of the cpp builds it owns object so as the projects change
+                        * It only rebuilds the objects it needs to rebuild
+                        * In headers for everything, we only have one cpp file and we build everything into one giant object..
+                        * The main disadvantage of having this type of header is that ( it requires long compile time for a single change) if the order of the execution is changed the 
+                        * entire things needs to be changed.
+                        * in really largee project the single object rebuild can take a really long time but the single object rebuild happens instantly.
+
+        ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                *MONOLITHIC C++ FILES
+                        SCREW IT I AM ONLY GOING TO HAVE ONE CPP FILE NO MATTER HOW LONG IT BECOMES
+                        ALL HEADERS ARE CASCADING OVER ONE ANOTHER
+
+        
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+* INCLUDING LIBRARIES
+        * use a manager vcpkg or conan 
+        * conan is like the node
+        * basically it handles building vcpkg and conan
+        * do it manually 
+                * download ,build ,link
+                * or download prebuilt and link
+                * download the prebuilt binaries which includes the prebuilt binaries and the final object that you have to link it to
+
+        * git submodules ( point to github modules and set up cmake ) etc.
+        * git submodules and vcpkg.
+        * doing manually 
+        *
+        *
+*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+*BUILD SYSTEM
+        * cmake
+        * premake
+        * IDE 
+        * VS/XCODE/ set up makefile between editorals.
+        *
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~                                                                                                                                                                                                                                                                                                                                                                                                    
+~                                                                                                                                                                                                                              

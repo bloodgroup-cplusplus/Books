@@ -23,12 +23,13 @@ struct User
 
 	protected:
 		uint32_t first_name,last_name;
-		static bimap<uint32_t, std::string> names;
+		static boost::bimap<uint32_t, std::string> names;
 		static uint32_t seed;
 		static uint32_t add(const std::string &s); 
 		const std::string & get_first_name() ;
 
 		const std::string & get_last_name();
+		friend std::ostream & operator <<(std::ostream & os, const User &obj);
 };
 
 // Constructor initializes the members first_name and last_name with the result of calling the add() function.
@@ -51,18 +52,18 @@ static uint32_t add( const std::string &s)
 	return it->second;
 
 }
-const std::string & get_first_name() const
+const std::string & get_first_name() 
 {
 	return names.left.find(last_name)->second;
 }
 
-const std::string & get_last_name() const
+const std::string & get_last_name() 
 {
 	return names.left.find(last_name)->second;
 
 }
 
-friend ostream & operator <<(std::ostream & os, const User &obj)
+friend std::ostream & operator <<(std::ostream & os, const User &obj)
 {
 	return os<<"first_name:"<<obj.get_first_name() <<"last_name:"<<obj.get_last_name();<<std::endl;
 }

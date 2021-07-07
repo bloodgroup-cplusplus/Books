@@ -1,0 +1,5 @@
+Design principles introduced by Robert C Martin -aka Uncle Bob
+
+*) Frequently references in Deisgn Pattern Literature
+
+*) 

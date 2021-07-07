@@ -1,0 +1,198 @@
+All right, so we're going to begin our discussion of the solid design principles by looking at the
+
+single responsibility principle.
+
+So what single responsibility principle basically states is that a class should have a single reason
+
+to change.
+
+In other words, a class should have a primary responsibility and it should not take up other responsibilities.
+
+Let me give you an example from the real world.
+
+Let's suppose that I'm a programmer, so I'm getting paid to actually program stuff.
+
+Now, this is my primary responsibility.
+
+Of course, I can break down my programming efforts into the different parts, but my primary responsibility
+
+is to program.
+
+So if somebody comes up to me and asked me to make coffee for them, well, that's not my primary responsibility.
+
+Somebody else should make coffee or maybe they should just go to the coffee machine and make the coffee
+
+themselves.
+
+But it's not my responsibility.
+
+And it's the same idea being propagated to software engineering as well.
+
+So let's suppose that you decide to make a journo class, you decide to make a class for replicating
+
+a journal and storing your most intimate thoughts.
+
+So the Journal might, for example, have a title and you might also have a number of entries which
+
+will keep as a vector of strings here.
+
+So having made this kind of journal, what we can do is, well, we can, first of all, initialize
+
+it.
+
+So make a construct of which sets the title, for example.
+
+But in addition to that, what we might want to do is to have functionality for actually adding entries
+
+to the journal.
+
+So you might have, for example, a function called at entry, which takes a string for the entry.
+
+And you might also want to try and be smart about it and actually sort of get the entries numbered.
+
+So you might want to have some sort of counter account like this.
+
+And then when you do add the entry, so when you say entries, they'll push back.
+
+You actually constructing use during which uses not just the entry parameter that we get as part of
+
+the function, but you also use this count.
+
+So here I can use the boost lexical cast to cast something into a string, just take the count plus
+
+plus eight and get the previous value into a string and then let's put a colon in here and then add
+
+the entry.
+
+So this way we get a more informative entry into our journal.
+
+So what I'm doing right now is I'm adding things which are actually relevant to working with a journal
+
+and you would typically initialize it like the following so you would make a journal.
+
+So we may as well call Dear Diary not dead diary, dear Diary, that's much better.
+
+And then you would say journal, dot, journal, dot, add entry and entry like so and you would maybe
+
+have an entry.
+
+Let me just scroll it down.
+
+Being obscured here so you might have an entry code.
+
+I ate a bug and another entry called I cried today, something like that.
+
+So we've got two entries.
+
+They are added to the journal and it is in fact the journals of responsibility to keep the entries inside
+
+the journal.
+
+However, at some point in time, let's suppose you want to actually save the journal in a file, for
+
+example.
+
+So what do you do?
+
+Well, the wrong way to go about it is to add the load and save functionality right inside the journal.
+
+So in addition to the journal, just keeping the entries and maybe allowing you to add entries, modify
+
+entries, remove entries and so on, you decide to add another concern, another idea called persistence.
+
+So you add a function called save.
+
+So you had a function called Save, which takes a file name.
+
+And what it does is it creates an output file stream with the file name and then it goes through all
+
+of the entries and somehow saves into the database.
+
+So you might have something for auto in entries and you would say output file stream E followed by and
+
+then line, for example, something to that effect.
+
+So the problem with this approach is you now have a separate concern, a concern called persistence.
+
+So you are adding persistence code into your journal.
+
+Now, imagine if you have in addition to a journal, you also have a dozen other domain objects that
+
+you're working with and you give every one of them a function called save and a function called load
+
+and so on and so forth.
+
+Now, the problem with this is that when you want to change persistance, you would have to change persistent
+
+in 10 or 20 of however many classes are actually using it.
+
+Instead, if you want to, for example, stop, stop loading from files and stop saving to files and
+
+you want to start using databases instead, you would have to go through all of this code and change
+
+it everywhere, which is not good.
+
+So essentially what we do is we do something called separation of concerns.
+
+So essentially we're saying that the Journal should take care of the journal entries and the journal
+
+title.
+
+And it's kind of like a storage mechanism.
+
+But if you want to persist things, you need to have a separate component, a separate class.
+
+So you might, for example, have a persistance manager like so.
+
+And this will be the one central location where the different objects, such as journals, for example,
+
+are loaded and saved.
+
+And here is where you would add a function similar to this function.
+
+So you would have a.
+
+Function, which kind of goes in the same way you might even make it static, for example, but you
+
+would also specify that you can save a journal, so you would say const journaled J.
+
+And then when you go through the entries, you go through the entries from that particular journal.
+
+So this is a more robust, a more reliable way of actually implementing persistance, because what happens
+
+as your persistence manager grows, you have all the persistence code in a single place.
+
+And as a result, if you do decide to make a change, if you decide that instead of using false dreams,
+
+for example, you go for a database instead, what you simply do is you go into persistence manager
+
+and you you refactor it.
+
+You may be make the persistence part of the path related to where you save the elements.
+
+You might want to make a general and have it somewhere else as part of the persistence manager.
+
+So this is the gist of the single responsibility principle.
+
+So the Journal has to be responsible for its own title and entries and the way that you work with them.
+
+But when it comes to persistence, it makes more sense to separate out this concern.
+
+And we have this additional term in programming called separation of concerns.
+
+So the concern related to persistence is actually moved into a separate component.
+
+And then, of course, you can use this component whenever you want to actually save something.
+
+So instead of saying journal dot save sort of Dierig texte.
+
+So instead of doing this, what we essentially do is we make a persistance manager.
+
+So we say Persistance Manager P.M., for example, and then we say PMed save, we provide the journal
+
+here and we provide the name of the actual file.
+
+So this is a much better approach and it's made better by adhering to the single responsibility principle.
+
+
+

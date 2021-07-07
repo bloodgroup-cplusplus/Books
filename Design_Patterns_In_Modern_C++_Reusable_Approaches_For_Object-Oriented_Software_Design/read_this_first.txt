@@ -1,0 +1,64 @@
+1) What are design patterns?
+	Designed patterns are common architectural approches
+
+2) popularized by the Gang of Four book (1994) smalltalk and C++
+
+3) We now have modern C++ (take those design patterns in modern C++)
+
+4) Translated to many oops languages C#, Java... and plenty of languages and JS
+
+5) Design patterns are universally relavant.. They became so popular that they were internalized in some languages.
+
+6) Obsserver pattern is now a keyword in C# as 'event' . Even java has the event
+
+7) We certainly can implement patterns ourselves.
+
+8) If we are not aware of design patterns we make use of it unknowingly
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+			SOLID DESIGN PRINCIPLES
+
+	Creational     Structural   Behavioural
+
+
+
+CREATIONAL DESIGN PATTERN:
+
+	*)Builder
+	*) Factories
+		 *) Abstract FActory
+		 *) Factory Method
+
+	*) Prototype
+
+	*) Singleton
+
+STRUCTURAL DESIGN PATTERNS:
+
+	*)Adapter
+	*)Bridge
+	*)Composite
+	*) Decorator
+	*) Facade
+	*) Flyweight
+	*) proxy
+
+
+BEHAVIORAL DESIGN PATTERNS:
+
+	*) Chain of Responsibility
+	*) Command
+	*) Interpreter
+	*) Iterator
+	*) Mediator
+	*) Momento
+	*) Observer
+	*) State
+	*) Strategy
+	*) Template Method
+	*) Visitor
+
+
+
+	

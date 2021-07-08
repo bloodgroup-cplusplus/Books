@@ -1,0 +1,225 @@
+The third principal from the solid design principles that we're going to take a look at is called the
+
+Risk of Substitution Principle, which is named after bodiless golf.
+
+So the goal of this principle is to specify that subtypes should be immediately substitutable for their
+
+base types.
+
+So once again, I know this sounds particularly cryptic.
+
+So we're going to take a look at an example of how the risk of substitution principle can actually be
+
+broken.
+
+So let's suppose that you define a class called rectangles.
+
+I'm going to have a class called Rectangle.
+
+It's going to have a bunch of protected members.
+
+It's going to have a bunch of protected members.
+
+Specifically, we're going to have the width and height of the rectangle.
+
+So we'll have it with height.
+
+And then I'm going to have a bunch of public members.
+
+So I might, for example, decide to make a constructor which initializes the within the height.
+
+So that's probably the first thing I would want.
+
+And also, let's make a bunch of getters and setters.
+
+So let's suppose that we decide to generate the getters and setters are going to get her and center
+
+here, generate them for both with as well as height.
+
+So we have a bunch of functions which simply allow us to get and set the width and the height.
+
+And in addition, let's have a function which calculates the area.
+
+So I'm going to have a function which returns an end area and it simply returns with time as height.
+
+So this is the area of a particular shape.
+
+Now, somewhere down the line, I decide that I want to extend this model, but before I do, let's
+
+suppose I'm already using some sort of API for working with Rectangle.
+
+So let's suppose I have a function called process, which takes a rectangle reference to a rectangle
+
+reference code R and let's suppose that it does the following and gets the width of the rectangle so
+
+arget width like so it then sets the height of the rectangle to ten.
+
+So it says are dot set height to ten and it expects the area to be equal to width times ten because
+
+well that's what it's setting right here.
+
+So let's actually output this.
+
+So we expected the area to be with times 10.
+
+But instead, we got something different.
+
+Well, we might get something different in certain situations.
+
+So here we say that's what we got is our DOT area.
+
+We have a function for area.
+
+I'm just going to put an end line in here and we can already try this out using an ordinary rectangle
+
+and we're actually going to be fine with just the rectangle.
+
+So we're going to have a rectangle are with size three and four.
+
+And I'm going to process this rectangle.
+
+Are we're actually going to run this and see what the output is now?
+
+Because we're working with a rectangle and we're clear about the expectations.
+
+We're clear about the setting of with and height, the expected areas, 30 and we get exactly 30.
+
+There is no problem.
+
+Now, let's suppose that somewhere down the line you decide to use inheritance to inherit from rectangle
+
+and make a square.
+
+So this sounds like a good idea.
+
+You make a square which inherits from Rectangle and maybe you want to customize it a bit.
+
+So let us suppose, for example, that we'll have first of all, we have the constructor, so we'll
+
+have a constructor called Square, which takes the size of the square or the size being the length of
+
+any of its sizes.
+
+And you initialize the rectangle with size being on both with and height because that's the definition
+
+of a square.
+
+It's within height is exactly the same.
+
+But in addition, let's suppose that you decide to go and make set with and set height virtue so that
+
+you can override them inside of the square.
+
+So whenever somebody sets the width or the height of the square, you set both of the width and the
+
+height.
+
+So we're going here and we go into override functions and we pick set with as well as set height.
+
+We press OK here and then we totally redefine the way these are implemented.
+
+So essentially here all I'm doing is I'm saying this width is equal to this, height is equal to width.
+
+So I'm trying to set both dimensions at the same time.
+
+And I'm doing the same here with height, obviously.
+
+So it looks like a good idea.
+
+Unfortunately, what we've just done is we've violated the look of substitution principle, which states
+
+that if you have let's say you have a function which takes a base class, any derived class should be
+
+able to be substituted into this function without any problems.
+
+And unfortunately, we're going to have a problem here, because if I make a square, let's call it
+
+askew with the side of five and I call process here, something very unpleasant is going to happen now.
+
+Let's just remind ourselves what process does.
+
+So it tries to set the width of the shape or again, the width of the shape and store it in a variable.
+
+So we put the width of the shape in the variable.
+
+We said the height to ten and then we expect the area to be equal to width times 10.
+
+It makes perfect sense, but it only makes perfect sense for a rectangle because what we've done in
+
+the square is we've broken the set or mechanic.
+
+We've broken set height because when you call set height, you're not just setting the height, you're
+
+also setting the width.
+
+So now if I execute this, you can already guess what's going to happen.
+
+They will blow up.
+
+It will give us a different expected area.
+
+We got an expected area of fifty, but we actually get 100 because when we set the height to ten, we
+
+also set the width to ten.
+
+And so ten by ten becomes 100 hundred.
+
+And that's what we get here.
+
+So we've broken the list of substitution principle with this very simple example.
+
+Now, the one question you might have is, well, how do we actually fix this?
+
+What can we do about this whole situation in order to avoid this kind of screw up?
+
+Now, my argument is that the very idea of inheriting square from rectangle is not the best idea, because
+
+both of them.
+
+I mean, the square.
+
+Yes, in terms of the language square is in fact a rectangle.
+
+So you can say Square should inherit from Rectangle because it is such, but you could do it differently.
+
+So, for example, you could just keep rectangles and have a rectangle with a boolean flag indicating
+
+whether it's the square or not.
+
+You could also if you want to construct rectangles and squares, specifically, what you could do is
+
+you could just make a factory.
+
+And we're going to see factories in just a moment.
+
+But essentially you would have some sort of rectangle factory, something like the following, which
+
+would construct the square as a rectangle.
+
+So you would have a static function which returns a rectangle, and it's going to be called create a
+
+rectangle with within height like so.
+
+And you would also have a function which would be called Create Square, which would also return a rectangle,
+
+but it would just take the size of the square to be constructed.
+
+So this is a more sensible way, which wouldn't break the list of substitution principle.
+
+So to reiterate, the idea is that you should be able to substitute a derived glass.
+
+In this case, it's a class called square derived from rectangle.
+
+You should be able to substitute it into any location where a base class is being used like here.
+
+And obviously with our design, this is unfortunately.
+
+Possible.
+
+
+0:08
+ 
+1000
+
+
+

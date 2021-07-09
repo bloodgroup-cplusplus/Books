@@ -1,0 +1,369 @@
+So the final principle that we're going to take a look at is the dependency inversion principle.
+
+Now, I'm sure that many of you have heard about dependency injection, but the dependency inversion
+
+principle isn't really about the injection.
+
+It's simply specifying the best way to form dependencies between different objects.
+
+So the dependency inversion principle is actually split into two different ideas.
+
+So here are they are the first idea is that high level modules should not depend on low level modules
+
+and instead both of them should depend on abstractions.
+
+And the second idea is that abstractions should not depend on the details, but rather the details should
+
+depend on abstractions.
+
+So, first of all, the question, what do we mean by abstraction?
+
+What generally when we talk about abstractions, we talk about interfaces or base classes.
+
+So essentially, instead of depending on a concrete type, what you really want is you want to be as
+
+general as possible.
+
+You want to take in an interface which provides you the necessary functionality, but you don't want
+
+to depend on the concrete type more than you need to because then you are depending on the implementation
+
+details.
+
+So, for example, if some class has a vector inside, you start taking that vector and iterating it,
+
+you might be in trouble if the class decides later on to change it to something else.
+
+And that's why we have abstractions in the first place so that you can change the underlying implementation.
+
+Now, let's actually take a look at where this could pop up.
+
+So let's suppose that we decide to model relationships between different people.
+
+So I'll have an enum class called relationship and we're going to have different relationships, like,
+
+for example, a parent or a child or a sibling.
+
+So this signifies the relationships between person and person B, so person A might be a parent of Person
+
+B or their child or their sibling or something will define the structure called person with just the
+
+name and nothing else.
+
+Really.
+
+We don't really care about anything else for now.
+
+And what we might want to do is we might want to make some sort of low level construct for actually
+
+storing the relationships.
+
+So let's have a structure called relationships.
+
+So the structure called relationships will have a vector.
+
+So we're going to have a vector of tuples and inside the tuple, we're going to have the two people
+
+as well as the relationship between them.
+
+So we're going to have person call my relationship karma, relationship, karma person like so and this
+
+is going to be the set of relations that we have now.
+
+What we can do is we can provide some sort of API for actually adding elements to this relations collection.
+
+So, for example, if you want to add a parent and a child, it would look something like the following.
+
+Add parent and child where you take the parent and you take the child as well, and you simply add them
+
+to the relationships that you would have to have them twice.
+
+Because remember, we have the parent relationship, but also the child relationship.
+
+So you would write something like relations or relations, push back.
+
+And here, for example, you would have the parent being the parent of a particular child, but you
+
+would also have the reverse relationship.
+
+So in this case, you would have the child, which would be the child of the parent like.
+
+So OK.
+
+So having constructed this kind of definition and by the way, it's completely valid, please ignore
+
+the sea lions.
+
+Quigley's here.
+
+So having constructed this kind of API, what we can do is we can start using it straight away.
+
+So, for example, we can make a parent call John and do children called Matt and Chris and we can build
+
+the relationships out of them.
+
+So I'll have a person called, well, let's call this variable parent.
+
+So John is going to be the parent and then we're going to have a child, one called Chris and Child
+
+two called math, for example.
+
+OK, so now what we can do is we can create an instance of relationships like so and we can add the
+
+actual relationships.
+
+So I can as parent and child, where we have parent and child one and the same would go for child to
+
+child to like.
+
+So OK, so this is all good and we can now try to perform research on the different relationships.
+
+So essentially the structure called relationships that we have right here is what you would call typically
+
+a low level module, low level module or a low level construct in our design, because essentially all
+
+it does is it provides functionality for data storage.
+
+So we have this vector of tuples and it has a couple of utility functions for actually populating that
+
+storage.
+
+But if you want to perform research on the data, this will be a high level module.
+
+We may as well call it research.
+
+So we have struct research like so and this would be high level, high level like so now.
+
+Let's suppose we want to do all the research in the constructor so you would have a constructor, but
+
+of course we know that in order to perform the research, we need to somehow get the data.
+
+Now, the worst thing to do here and the thing which breaks the dependency inversion principle is to
+
+actually take a direct dependency on a low level module.
+
+And remember, if we scroll up here, it clearly says high level modules should not depend on the low
+
+level module.
+
+But that's exactly what we're going to do.
+
+So we're going to have a high level module called research, which is going to depend on a low level
+
+module like this.
+
+So we're going to take a reference to it.
+
+And would that reference?
+
+What we're going to do is we're going to actually access the details.
+
+Now, remember, this is once again something that we should really try to avoid doing.
+
+We don't want to depend on the details, as you can see here, in the definition of the dependency inversion
+
+principle.
+
+But we are going to do it just to illustrate how much of a bad idea this is.
+
+So what I could do is I could take a reference to the vector off tuples that we have.
+
+So I can say relationships, dot relations, and I can take a reference.
+
+And then and now, unfortunately, the high level module, it's kind of directly dependent on the implementation
+
+details because we know it's a vector, so we start traversing this vector.
+
+So, for example, I can use all the fancy C++ 17 syntax for traversing the tuple, so I'll have first
+
+REL and second out of the relations and I can obviously perform my research.
+
+So if I want to find all the children of John, I can certainly do it.
+
+I can say if a first name is equal to name and relationship.
+
+Well, actually.
+
+First name is equal to John, for example, if I'm looking for children of John and the relationship
+
+is equal to relationship, a colon colon parent, for example, then I know that second is actually
+
+John's child.
+
+So we can print this out.
+
+We can, for example, see out the fact that John has a child
+
+called and then put a second name in here like so.
+
+OK, so despite some of the complaints from Sea Lion and by the way, I'm using C++ latest here, so
+
+that should explain why maybe some of this stuff isn't recognized despite some of the complaints.
+
+This is actually a valid code and it will work just fine.
+
+So let me make a research component research underscore and it has a dependency on relationships.
+
+So here I would specify that relationships in here and we're generally good to go.
+
+So essentially, even though we are breaking the dependency inversion principle, we do have something
+
+that's working.
+
+And I could actually try to compile it and just show you the fact that this produces the result that
+
+we want.
+
+So here we have John has a child called Chris and John has a child called Matt.
+
+So everything is fine, except let's imagine what happens if, for example, the low level module decides
+
+to change the storage of relations or perhaps it just goes off and it makes the relations member variable
+
+private so it tries to hide it completely.
+
+And in this case, the high level code is completely broken, unfortunately.
+
+And that's why the dependency inversion principle exists in the first place.
+
+It protects you from changes in the implementation details.
+
+So the question is, well, how would you go about fixing this particular situation?
+
+Well, you would typically fix it through an abstraction.
+
+So instead of having the direct dependency on some low level module, you would introduce an abstraction,
+
+you would introduce some sort of interface.
+
+But that's only part of the problem.
+
+The other part of the problem is really if you want to find all the children of a particular person,
+
+I would argue that the single responsibility principle STITZ still puts this responsibility as part
+
+of the relationships class.
+
+So your research doesn't really have to delve into, you know, finding the children of somebody.
+
+You can move it down, so to speak.
+
+You can move it into a low level module.
+
+So we have two ideas, moving something to a low level module and introducing an abstraction.
+
+Now that abstraction is going to be called a relationship browser.
+
+A relationship browser is going to provide a few useful bits of functionality for searching, for example,
+
+for all the children of a particular person.
+
+So we can do that so we can have a virtual function which returns a vector of person and we're going
+
+to call it find all children of.
+
+And in this case, just you just specify the name.
+
+Basically, you specify the name of the parent and you have to find all of the children.
+
+So this is the interface.
+
+You can see it's a purely virtual function.
+
+And then we take relationships and we specify the relationships is actually providing functionality
+
+of a relationship browser.
+
+So coming down here, I can now jump into implement functions and implement the find all children all
+
+function.
+
+Now, the implementation itself is fairly obvious, as I'm sure you may have guessed.
+
+Basically, you make a result, which is a vector of person, or you can make a vector of person pointers
+
+or something like that if you want.
+
+Then once again, we iterate through all of the all of the actual items that we have.
+
+So first Réal, second in relations, you once again check whether you found the right person.
+
+So you say if a first name is equal to the name that you're looking for and the relationship is relationship
+
+coal and coal and parent, then yeah, you can add it to the results are resolved or push back and you
+
+add the second, which is the child of John or whoever you're looking for, and then you return the
+
+result.
+
+So we have now effectively conformed relationships to the relationship user interface by implementing
+
+this particular function.
+
+And as a consequence of this, we can rewrite the research component.
+
+So instead of depending on all these details, which is going to comment everything out, we are now
+
+going to depend just on a relationship browser.
+
+So research is going to depend on any relationship browser reference.
+
+It's called browser.
+
+And here all you have to do is you just have to use the API that we made because we made the special
+
+function called Find All Children of.
+
+So essentially what you can say something like for auto child in browser dot, find all children off
+
+John, for example, and we can once again print out the information that John has a child called and
+
+once again we can get the child name followed by an end line.
+
+So let's actually see.
+
+What happens as we execute this, interestingly enough, we don't have to change any of the code here,
+
+so the code here is still fine because remember, relationships implements the relationship browser
+
+interface.
+
+And so if we stick it into the constructor, thanks to polymorphism, it works just fine.
+
+So we stick a relationships in here as a relationship browser and everything works correctly.
+
+So that's actually execute this and see what we get.
+
+All right.
+
+So as you can see, we're getting exactly the same results, but we're getting them in a nicer fashion.
+
+So the takeaway from this is that you want to have dependencies on abstractions, meaning typically
+
+dependencies on interfaces rather than concrete implementations.
+
+And you don't want to delve into other classes details and start depending on their details, because
+
+remember, at some point in time, relationships might decide to replace the vector by some kind of
+
+map or something.
+
+And in this case, you're going to be really screwed because you're iterating a vector of tuples and
+
+there is no longer a vector of tuples for you to iterate.
+
+Now, speaking of dependency injection, what typically happens is dependency injection allows you to
+
+specify certain default.
+
+So, for example, dependency injection would allow you to specify that whenever somebody wants a relationship
+
+browsr, they should be provided a copy or a reference to the relationships class.
+
+So this is how dependency injection kind of plays on top of the dependency inversion principle.
+
+But the inversion principle just basically says that both of the high level and low level modules should
+
+really be depending on abstractions and you should not depend on details of somebody else's implementation.
+
+

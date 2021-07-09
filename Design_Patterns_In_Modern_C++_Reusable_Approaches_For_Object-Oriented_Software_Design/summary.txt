@@ -1,0 +1,24 @@
+Summary
+	SOLID
+	*)SINGLE RESPONSIBILITY PRINCIPLE
+		*) A class should have one reason to change
+		*) Seperation of Concerns- different classes handling differnt, 		   independent task/problems
+
+		*) for independent refactoring
+
+	*) OPEN CLOSED PRINCIPLE
+		*) Classes should open for extension but closed for modification
+		*) If you are coming back from already tested class and modifyin			things is not best way to go but use inheritence.
+
+	*) LISKOV SUBSTITUTION PRINCIPLE
+		*) you should be able to substitute a base type for a subtype
+	
+
+	*) INTERFACE SEGREGATION PRINCIPLE
+		*) Don't put too much into an interface; split into seperate interfaces
+		*) YAGNI= You ain't going to need it.
+
+		*) excess stubs and exceptions
+
+	*) DEPENDENCY INVERSION PRINCIPLE
+		*) High-level modules should not depend on low-level ones; but use abstractions.

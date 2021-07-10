@@ -1,0 +1,14 @@
+Some objects are simple and can be created in a single constructor
+call
+
+other objects require a lot of ceremony to create
+
+Having an object with 10 constructor arguemtns is not productive
+
+If you have constructors with too much argument it will generate false sense of security
+
+Instead opt for piecewise construction
+
+Builder: When piecewise object construction is complicated provide an API for doing it succinctly.
+
+

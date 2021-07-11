@@ -1,0 +1,273 @@
+OK, so one of the improvements that I want to add to our implementation of the builder is something
+
+called a fluent interface.
+
+So as you can see, we've got to add child calls here one after another.
+
+Now, what if I told you that you can actually do them like this sort of our child one and then add
+
+child to know that this is actually quite common in design patterns such as the builder, and it's called
+
+a fluent interface now to make a fluent interface.
+
+You simply change the return type of a function from a void into either a pointer or a reference to
+
+the type you currently.
+
+And so we're in the HTML builder so we can return a reference to HDMI builder by simply returning star
+
+this and this way.
+
+What happens after the first child call?
+
+The end result of that call is a reference to HDMI builder and you can take that reference and do another
+
+call of ad child on top of that.
+
+And you can sort of continue this to infinity by doing more and more calls.
+
+Now, this is particularly convenient in builders because sometimes the builders you make, they want
+
+to kind of do several very similar things, or you might want to specify how the chain of build commands
+
+can be constructed and you can do this using this kind of fluent interface.
+
+Now, another thing that you can do is you can give a hint to the consumer, to the client that's actually
+
+using your API that they should really be using the builder.
+
+And here once again, it's really up to you how to do this.
+
+But for example, what you could do is you could make a static function inside the HTML element, because
+
+that's actually the thing that we're building up.
+
+You can make a static function called build, which would return an HTML builder.
+
+So you would have a function called build, which would take the root name because remember, that's
+
+what the builder takes as a constructor argument.
+
+And here you would return simply the builder with that argument.
+
+So you would return on this core name provided to the constructor of a builder.
+
+Notice we don't have to put in the actual name of the class.
+
+We're returning here because it's inferred from this.
+
+And as a result, what you can do is you can do something like the following so you can say auto builder
+
+equals and then you can say HTML element Kullen and build.
+
+So you build the unordered list, for example, and then you can call a child on it however many times
+
+you want.
+
+So this is a valid way of actually putting many things into a single basket, so to speak.
+
+So at the same time you constructed from the element you're building up and then you call a child on
+
+and on.
+
+The final kind of icing on the cake, if you will, is that it's possible to define an automatic conversion
+
+operator so that when you instead of making a builder, let's suppose you actually want to get an e-mail
+
+element here.
+
+Let's suppose you want to have an e-mail element called Element or just Elim in here as a result of
+
+this build process.
+
+Now, we know that the right hand side typically yields an HTML builder because you call build and then
+
+you call that child.
+
+All of these things, as you can see, that return a builder.
+
+So how can you convert one to another?
+
+Well, in actual fact, it's it's rather easy.
+
+So you can simply make an operator called HTML Element where you would return the roots element that
+
+you're building up.
+
+So this is how all of this actually becomes valid.
+
+And then you have the element and you can sort of operate on the element.
+
+Now, in some situations, if you know that this operation is going to be the last operation that you
+
+ever need to do and you don't care about the root, what you can also do is you can move the root out
+
+of here.
+
+So you can actually the move, the root out of the function.
+
+But really, it doesn't matter in this particular example so much and it's really up to you.
+
+So, for example, if you're using something like a factory instead of a builder, it might make more
+
+sense.
+
+But here are defining this operator.
+
+What this means is that you're returning.
+
+Well, in this case, we're suddenly returning a copy of the operator.
+
+Mind you, it's also possible to change this entire API to stop working on references and start working
+
+on pointers in the sense that you can, for example, make a copy of this function.
+
+And instead of returning a reference, you can return a pointer.
+
+And I'm just going to call this child, too.
+
+And here you can, instead of returning start this, you would return this and this way you would have
+
+the whole thing made up of pointers.
+
+And as a result, if you want to build an actual invocation chain of these, add child to calls, they
+
+would use Dasch greater than in between instead of the dots.
+
+So you would have something like the following instead.
+
+And suddenly, if you want the start of the invocation to also use Dasch greater, then then instead
+
+of returning the value of the HTML builder and hoping for some return value optimization here, what
+
+you can do is you can return a static, unique BTR, for example, of an HTML builder called Once Again
+
+Build where you would simply return, make unique and so on.
+
+So it's really up to you whether you want the reference API or the Pointer API.
+
+I would of course recommend the reference API just seems more sensible this way.
+
+Now returning a.
+
+Builder sort of buy value in quotes is not not a particularly big thing here, I would I would say it's
+
+it's not a particular big problem.
+
+Now, the operator is just, you know, some icing on the cake that you may or may not want to add to
+
+your design, but you are sort of giving hints to the user that you want them to construct the object
+
+this way.
+
+Now, furthermore, what you can do is you can actually force them to do this so you can force people
+
+to actually use the builder instead of constructing the object via ordinary constructors.
+
+And the way this is done is fairly obvious as well.
+
+So we have a couple of constructors here in the moment.
+
+These constructors are they are public.
+
+But what if I do it like this, for example, and I only start doing the public stuff from right about
+
+here.
+
+This way the constructors actually become private and you can no longer actually use them.
+
+Now, the problem with this is that not only can you not use them, but the builder unfortunately cannot
+
+use them either, as you can see here, because they are now all completely private.
+
+So in order to do this, the only way and the way that C++ allows you to do this is to specify a French
+
+class.
+
+So you say friend, class, tamo, builder, and from this point on, you are good to go.
+
+So the client, meaning me as the consumer of the API, I kind of go ahead and just make my own HTML
+
+element.
+
+I can just go and say, oh, can you please give me an e-mail element called E?
+
+Because the constructor is on E are completely unavailable as a result.
+
+This is not valid.
+
+So I am resorted to go looking for any kind of API on HTML element that I can actually find.
+
+And of course I'm not going to find any constructors or any members on it, but I will find a static
+
+function called built.
+
+So for me it will be a fairly obvious choice.
+
+I would say HTML element, colon, colon.
+
+I would look in here and I would say, oh look, there is a build here.
+
+So I would call build and I see that it takes some root name or other and that would put a dot here.
+
+And typically what you would do, you suddenly have your string construction here.
+
+If you want a string representation or at some point you might want to actually have an explicit kind
+
+of build function, which kind of finishes the build, so to speak.
+
+So when you call build, that's kind of like the the start.
+
+And we can actually rename them, you know what?
+
+We can actually rename these things.
+
+So, for example, when you are starting out with a builder, you can call it something else.
+
+So we can, for example, go here and rename it to create.
+
+And when it comes to build, that would be something that would be added once again as an element of
+
+HTML builder.
+
+So you would have a function which returns in HTML element.
+
+It's going to be called build and all it does is it returns of the root of the object that you actually
+
+building.
+
+So the consequence of this is if you want to build up and if you want to kind of stimulate the user
+
+to actually have this invocation in the right way is html element, colon, colon, create with a particular
+
+root and then you do your add child calls and whatever, but when you're done you call, build and build
+
+will be the final step because one of the problems is that even though you have this implicit conversion
+
+operator, your clients might not know about it, they might not know that this kind of conversion is
+
+possible.
+
+So they are going to be stuck with a builder and not knowing how to get the root from the builder.
+
+And I hear the word is public.
+
+But typically, once again, what you would do is you would hide it, you would make it, you would
+
+make it private, typically.
+
+So typically you would if I make it class, you would hide it and you would only start the public section
+
+from here.
+
+So it wouldn't be accessible directly, but you would be able to provide a special piece of API for
+
+actually returning the object that you've actually built up.
+
+So this is how you can sort of enhance the situation with Builder and provide a better and more sensible
+
+API, as well as make sure that the Builder API is the only API that's actually available for building
+
+the object by simply making its constructors private.
+
+

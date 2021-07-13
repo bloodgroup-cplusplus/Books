@@ -1,0 +1,251 @@
+Now, seeing how we're talking about returning HTML from C++, wouldn't it be really cool if you could
+
+actually write HTML right inside your C++ code?
+
+Well, unfortunately, this isn't visual basic for you.
+
+You can't do this kind of thing, but what you can do is you can sort of approach it.
+
+So in a way you can construct a domain specific language which allows you to construct HTML like constructs
+
+in valid C++ using uniform initialization syntax.
+
+So that's exactly what we're going to take a look at in this demo.
+
+And for this demo, what I'm going to do is I'm going to define a structure called a tag.
+
+So this is once again this idea of having an HTML element.
+
+This time I'm going to call it tax just because it's shorter, but the idea is roughly the same.
+
+So you have a tag which consists of a name and text.
+
+You also have a vector of children, which can be the tax inside this tag.
+
+And in addition, you can also have a TEMEL attribute.
+
+So that's the new thing that I'm going to add to this particular demo.
+
+So I'm going to have a vector of pairs of strings which indicate the key value pairs for the HTML attributes,
+
+and I'm going to call them attributes like.
+
+So now what we're going to do is we're going to take a look at how to actually use this tag as a base
+
+class in order to allow the clients to actually write something which looks a lot like HTML.
+
+So first of all, I will add the output operator.
+
+So the stream output operator, that's going to be useful for actually printing the whole thing.
+
+And it is a rather involved chunk of code.
+
+So I'm just going to drop it in here and we're not really going to discuss it.
+
+So let me just say that we define the stream output operator on the tag to print all the tags, including
+
+all the children and all the content correctly.
+
+That's what this chunk of code does.
+
+Now, the interesting part comes after.
+
+So suppose we have the tag.
+
+We're going to add a couple of constructors.
+
+I'm actually going to make them protected.
+
+So we're going to have just a couple of constructors.
+
+First of all, we'll have a constructor which initializes the tag using the name as well as the text.
+
+So we're going to have this.
+
+As you can see, I've generated it here.
+
+But in addition, we're also going to have a tag which gets initialized by its name, but instead of
+
+the text is going to have a bunch of children.
+
+So I'm going to once again go and generate the constructor.
+
+So this time around, we're interested in the name and the children.
+
+I'm going to press OK here once again.
+
+And as you can see, what's happening here is we have two arguments.
+
+We have the string name, the name of the tag, as well as a vector reference for the children.
+
+So this is great.
+
+Now, if you think about HTML, it has concrete implementations of different tags, like, for example,
+
+a paragraph.
+
+So we're going to define a paragraph as an inherited class.
+
+I'm going to have struct p p Stancil paragraph and that's going to be an HTML tag.
+
+Now, what we're going to do is we're going to make a constructor which initializes both the name as
+
+well as the text.
+
+Now we know what the name is.
+
+The name is going to be P because that's what the tag actually is.
+
+But when it comes to tax will simply proxy that over.
+
+So let's see what we can do here.
+
+And in terms of generating the constructor, so we're going to have a constructor which initializes
+
+both of these.
+
+But instead of the name here.
+
+Well, I'm going to do is I'm going to put the P tag in here.
+
+So I'm going to put just a lowercase P in here and I'm going to get rid of the name argument because
+
+we know what the name of this particular attack is.
+
+OK, so this is great, but we can do something better because a paragraph, as it happens, can also
+
+have some children of its own.
+
+Maybe you have an image inside a paragraph.
+
+That's a completely valid thing to have an image inside a paragraph.
+
+So let's add that.
+
+So the way you would do this is you would have a paragraph which can be initialized not with the text,
+
+but with a bunch of children.
+
+And what I'm going to do here is I'm going to use and initialize the list.
+
+So I'm going to use and initialize a list of type tags.
+
+So this tag, the tag P is going to take in its constructor a bunch of other tags.
+
+So here we go.
+
+We're going to have a bunch of children.
+
+And these children, they can actually be assigned to a vector of surprise, surprise.
+
+You can take and initialize a list and stick it into a vector wholesale.
+
+So once again, we're going to call the base class, which in our case is called tag, and we're going
+
+to call it with the name P as before.
+
+And the second argument is going to be the children.
+
+So essentially what's happening here is when you provide the children as an initialized list, it actually
+
+goes in here as a vector.
+
+So fairly obvious stuff.
+
+We're not going to add anything more to the P tag.
+
+The P tag is just fine.
+
+Let's add another tag.
+
+Just to illustrate the concept even more, we're going to have an image tag.
+
+So an image tag is a tag which.
+
+Doesn't really contain anything, and because it doesn't contain anything, we're actually not going
+
+to give it a constructor, which takes an the list, which is going to give it a different constructor,
+
+which specifies that you are aware of the image that you want to show.
+
+So we'll have a constructor called ACMG, which is going to take a string specifying that you are of
+
+the image.
+
+And of course, the URL is specified as an attribute.
+
+No, not as an inner tag or anything.
+
+So once again, we call the base class tag.
+
+The name is IMG and we have to use the constructor, which takes the text, but there is no text.
+
+I'm just going to put an empty string in here.
+
+OK, but we do need to put something in the constructor itself and what we're going to put in here.
+
+Let me just move this so that it's more clear.
+
+What we're going to put in here is an instruction to add an attribute.
+
+So I'm going to say attributes.
+
+Dalton plays back and I'm going to make a pair here where the name of the attribute is SIRC.
+
+That's how you make the source of the image.
+
+And the actual source is that you are well, that's being provided.
+
+OK, so let's put the semicolon in here.
+
+OK, so why did we do all of this?
+
+Well, because we've just built a very unique and very unusual domain specific language, if you will,
+
+which allows us to construct HTML, which looks like HTML.
+
+Let me show you so you can have let's say you have C out and then I'll just do a couple of Lindberg's
+
+so you can make a paragraph and then things to uniform initialization.
+
+You can just open the curly brace in here and have the closing curly brace in here.
+
+And inside the paragraph you can have an image.
+
+And once again, thanks to uniform initialization, you can just specify the image you are here.
+
+So it would be something like http Pokémon, dot com Pikachu, dot PNG, something like that.
+
+So we have a paragraph and we have the image inside it.
+
+And I will now add maybe the headline here as a kind of finishing touch and we can actually print this
+
+stuff out, interestingly enough, because all that we have written right now is valid.
+
+C++, even though it looks like almost like HTML without the without the obviously the actual tags as
+
+they look in HDMI.
+
+But it's very similar.
+
+What we have is very similar and here is the output.
+
+So as you can see, we have a paragraph and we have the image inside that paragraph.
+
+So all I'm trying to show here is that thanks to just a single mechanism of uniform initialization and
+
+C++, what you can do is you can construct these kind of pseudo DNS.
+
+And furthermore, it's interesting to note that you can actually constrain what elements go inside,
+
+what other elements by defining different constructors on all of these elements.
+
+So, for example, the image cannot contain anything else that cannot contain all the tags.
+
+So it simply doesn't have a constructor which takes and initialize the list.
+
+So this is a smaller side to the overall discussion of the builder concept.
+
+But essentially it's very similar because you're using or abusing, depending on how you look at it,
+
+where abusing uniform initialization to define structures in a more natural, more understandable way.

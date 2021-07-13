@@ -1,0 +1,469 @@
+In this lesson, we're actually going to take a look at an implementation of builder that's far more
+
+complicated because instead of just using one builder to actually work on an object, we're going to
+
+be using two builders.
+
+So this idea of an object being so complicated that you need separate builders for several different
+
+aspects of that particular object.
+
+So what we'll be building is something that one might call a builder facade.
+
+And a facade is yet another design pattern that we have as part of this course.
+
+So let's get started, shall we?
+
+I'm going to set up a very simple scenario.
+
+So I'm going to have a person class.
+
+Here we go.
+
+We're going to have a person class.
+
+And that person is going to have two different aspects to it.
+
+So a person might have address information and employment information.
+
+So let's have those parts of the person defined.
+
+So first of all, I'll have some address information.
+
+So I'm going to have let's have a steady string in here.
+
+So I'm going to have just a bunch of strings for the street address and the post code and the city as
+
+well.
+
+And we'll also have some employment information, employment.
+
+So we'll have, let's say, while the string has to have an STD prefix, so we'll have a company name
+
+as well as position, and we'll also have annual income as well, annual income with an initial value
+
+of zero.
+
+OK, so this is our person class.
+
+Notice all of these fields are actually private and we're going to make several builders to actually
+
+work on the address and employment specifically.
+
+But even though there are two aspects of the person class that we want to build up in separate builders,
+
+the number of classes will make for the builder infrastructures.
+
+Actually, for it's not even three, it's for different builders.
+
+So you're probably wondering, well, hold on, is this some kind of overengineering thing?
+
+Well, maybe to an extent it is, but we want a nice fluent interface.
+
+So let me just add a number of French classes and here so I'll have French class person builder and
+
+they'll also have French classes for person, job builder and person address builder.
+
+So as you can see, these are three out of the four classes that we're actually going to be involving
+
+ourselves with.
+
+Now, there is also a fourth class that we'll see in just a moment.
+
+But I want to start off somewhere.
+
+I want to start off at a point where you have the person providing a static method for actually initializing
+
+the builder.
+
+So we'll have something like static person builder create.
+
+So we've seen this before in the previous examples.
+
+Of course, I will forward declare person builder, self like so and then we can provide an implementation
+
+for this function.
+
+So in this case, what we're going to do is we're going to simply return a person builder.
+
+That's really all that is going to be happening here.
+
+There is no additional magic involved.
+
+OK, so coming back to person, though, as you can see, we have three different front classes.
+
+We may as well start working on them.
+
+And we're going to begin by starting our work on person builder.
+
+Now, person builder is going to be actually a file with two types in it.
+
+So let's go and create a new class.
+
+I'm going to call it person builder.
+
+So it is a dedicated builder for objects of type person.
+
+But there is a bit of a problem because we want to be using this class as a base class for person,
+
+job builder and person address builder.
+
+But we cannot.
+
+And the problem with this is that imagine if you have a person builder which has a person that's being
+
+built up because you have to have the person being built up, stored somewhere.
+
+Right.
+
+And this is this seems like a nice place to actually do that.
+
+So you have person here.
+
+Let me actually get the statement in here.
+
+But the problem is, if you inherit from it, you end up replicating the object that's being built up
+
+over and over and over because it's just an ordinary member.
+
+So what do you do?
+
+I mean, do you use a pointer or what?
+
+One of the approach is a really slye approach is to actually use two classes to use a base class, which
+
+doesn't have the object but just has a reference to it and to use a derived class, which does in fact
+
+have the object.
+
+So let's have a person builder here and then I'll have a public constructor, which actually well,
+
+too early for that to be for the constructor because essentially, in addition to person builder, we're
+
+also going to have a base class.
+
+We're going to have a class called Person Builder Base.
+
+Now, person builder base is different because it has a bunch of protected members.
+
+Specifically, it has a protected reference to the person being built up.
+
+So here we have the actual value of the object being built up here, this piece.
+
+But here we're going to have a reference to it.
+
+So we're going to have a reference to person and we'll initialize it in the constructor as well.
+
+OK, so we now have a nice constructor where you initialize the reference.
+
+So coming back to where we just were, what we can do is we can use this constructor from the derived
+
+class of person.
+
+Builder is going to derive from person builder.
+
+Base
+
+and it's going to have its own constructor, as you can see, we get red on the lines here already.
+
+It's going to have its own constructor, which simply passes in the object that it has constructed.
+
+So it's going to be an empty constructor, completely empty, but it passes in that variable P as the
+
+reference that's being worked upon, essentially.
+
+So here we go.
+
+I think I've have I messed up things a little bit.
+
+Well, only insofar as I need to remove this argument than here.
+
+So Person Builder doesn't actually take any arguments in the constructor and it simply provides a reference.
+
+So a reference to this particular object.
+
+This object goes into this constructor here.
+
+That's all that's happening.
+
+And the reason why we're doing this this way is that we can inherit from person builder base instead
+
+of inheriting from person builder.
+
+That's all there is to it.
+
+So now that we have made this, let's try to think about providing a fluent API for the different sub
+
+builders.
+
+So we're going to have a person address builder and they person job builder and they're all going to
+
+be coming out of person builder base.
+
+So here what we can do is we can have a person address builder function called lives, and we'll have
+
+a person, job builder, person, job builder function called works.
+
+Now, again, these classes don't exist yet.
+
+So I'm going to forward declare them.
+
+I'll declare a person, job builder and a person address builder as well like so.
+
+And we can now provide implementations of both of these.
+
+I'll generate the implementation here, generate the implementation here.
+
+But these implementations, they're actually going to be slightly different because remember, we have
+
+that constructor parameter.
+
+We have that parameter where you pass in the reference to whatever it is that you are actually building
+
+up.
+
+So this is where in both of these cases I'll get rid of the round brackets.
+
+I don't like them will pass in person.
+
+So that's what we do here.
+
+And that's certainly something that we do here as well.
+
+Now, of course, we also need a couple more includes here.
+
+We need a couple of more inclusive because we're missing some something that includes some of the stuff
+
+that we're doing.
+
+So I'm going to include person address builder, which we haven't made yet, as well as person job builder.
+
+But don't worry, we're going to make them in just a second.
+
+Let's actually do this now.
+
+So first of all, I have a person address builder and this is going to be interesting.
+
+So person address builder, as you may have guessed, it inherits from person builder base, not from
+
+person builder, but from the actual base, because we don't want the object being built up to be replicated.
+
+I think I've said it a couple of times already.
+
+So essentially the person addressed builder is going to be just a class.
+
+So it's going to be a class called Person Address Builder.
+
+We're going to inherit from person builder base and we go, OK, I'm going to include string in here.
+
+Let's include string so that we we get this.
+
+And we also need to have a matching constructor.
+
+So here we just take a reference and pass it onto the base.
+
+That's all there is to it.
+
+And now what we want is that we want a fluent interface now typing person, address builder all over
+
+the place is a bit too difficult for me.
+
+So I'm going to do a TYPEDEF so I'll type that person address builder to be self.
+
+Now we go and now I can provide a fluent API for building up the address.
+
+So in this class we're building up the address part of the overall definition.
+
+So here we're going to return a reference to self and we'll have for example, we have a function called
+
+at, which is going to take a string specifying the street address.
+
+It will set the street address of the object being built up.
+
+So we say person dot street address equals street address and then we return star this and this kind
+
+of fulfills a requirement of a fluent interface.
+
+Now what we can do is we can complete this entire class.
+
+I'm going to add a few more functionality in here so you can specify that the person lives at the street
+
+address with post code, such and such in such and such and city and in a similar fashion to the way
+
+we've made the person address builder.
+
+We can make a person job builder.
+
+So let's do that.
+
+So I'll go in here and make another -- is going to be person job builder.
+
+And this time round what we can do is we can do roughly the same.
+
+I'm actually going to just copy and paste stuff over.
+
+So as you can see, once again, we inherit from person builder base.
+
+We have a typedef for self.
+
+We have a constructor which simply passes the reference over and we have a specification for the person
+
+working at a particular company as a certain position, earning a certain amount of money.
+
+So the only thing that should be here is HBP instead of H.
+
+So this is how you make the actual sub builders and now we can go into the main and actually use all
+
+of this.
+
+And you're going to hopefully appreciate the way that things are panning out.
+
+But before we do this, one more thing that I really want to do, and that is the ability to turn a
+
+person builder into an actual person by providing an implicit operator.
+
+So this is something that allows you to write the following.
+
+So our goal is the kind of goal of this entire exercise is to write something like the following.
+
+So person P equals person create.
+
+So that's the static function that we made and then specify lives at with postcode in and then jump
+
+to the employment information later on.
+
+So we need a couple of header includes in here.
+
+Obviously it's not going to work without those.
+
+So we'll have person dot happy and we'll also include person builder AHP and we'll have the sub builders
+
+as well.
+
+So person address builder and JB BGB.
+
+Come on.
+
+There we go.
+
+OK, so maybe we don't need the last two, but anyways we'll just have them in here.
+
+So person created basically creates what it's inaccessible right now.
+
+We, we better make it public.
+
+So I'm going to stick a public section here so that we can actually use it for something.
+
+So we're going to make a person builder and we're going to use the person builder to jump from person
+
+address builder to person job builder.
+
+So as you can see, these are the functions, lives and works which return the appropriate sub builders.
+
+That's how the whole thing works in tandem.
+
+And remember, person, address builder and person job builder, they inherit from person builder based,
+
+not from person builder.
+
+The only reason why we have person builder is so that we construct the object that's being created,
+
+but we construct it just once.
+
+We don't do it for every inherited because that would result in ludicrous amount of duplication.
+
+So coming back to our scenario, the final thing that we want to do is we want to cast a builder to
+
+an actual person.
+
+And this is something that you can actually do in the builder.
+
+So if we go into a person builder, NHP, what I can do is I can just define an operator.
+
+So, for example, I can define something like the following operator person concept.
+
+And here we may as well just move the objects over turn as the the move person.
+
+There we go.
+
+OK, so this definition is something that we can work with.
+
+What is the complaint here.
+
+Change the type of operator function.
+
+No, I don't know why C line is complaining about this part.
+
+It looks perfectly valid to me.
+
+OK, so having implemented this, we can now go back to main CBP and this whole becomes valid and let
+
+me actually do a bit of layout so that you can see just how beautiful the whole thing is.
+
+So essentially you work with one builder, but because both builders share the common interface, you
+
+can jump from one to another with ease.
+
+And that's why you can specify the lives information and.
+
+And you jump to the other builder and you specify the work's information, and in the end, you end
+
+up with a person and you can actually see out, for example, that person's information to wherever.
+
+Now, we don't have we don't have the operator for actually printing a person.
+
+So we can we can generate something.
+
+Let's let's actually do that.
+
+Let's go into person dot HP and I'm going to go and just just do a little bit of cogeneration here.
+
+So we have the stream output operator to just select everything and see what we get here.
+
+So it's a large list of everything that's inside person, basically.
+
+So now that we've constructed this nice sort of faceted builder, it's actually a builder facade.
+
+So it combines the builder and the facade design pattern, the facade being that person builder class,
+
+we can actually start using all of this.
+
+Let's actually see if this compiles and what the end result is.
+
+All right.
+
+So as you can see, we're getting exactly what we expected.
+
+So we have the street address, 123 London Road with a postcode, the city, the company name the position
+
+and the annual income.
+
+So it all works after I did a tiny fix behind the scenes.
+
+But essentially what I'm trying to illustrate here is that when you have objects which are too complicated,
+
+you can actually split the builder into several builders which are working in tandem.
+
+And you can also provide these fluent interfaces which allow you to jump from one building to another
+
+at any point in time, which is also particularly convenient.
+
+But it does spawn a few extra classes.
+
+In this case, we need to builders.
+
+So we have two separate builders, but we actually have a whole four different classes.
+
+Obviously, the number of classes doesn't doesn't just explode like this.
+
+It's simply because we wanted to have a base class where the object reference is being sought, as well
+
+as a derived class where the actual value is being stored.
+
+That's all.
+
+So this is a more convoluted demonstration, but something that you might need in your development as
+
+your objects get more complicated.
+
+

@@ -1,0 +1,105 @@
+In this section of the course, we're going to take a look at two design patterns at the same time,
+
+and these patterns are the factory method and the abstract factory.
+
+And I decided to group them because really what we're talking about is we're talking about a pattern
+
+called a factory.
+
+But unfortunately, the Gang of four, a legacy kind of weighs in on us.
+
+So I'm going to cover the gang of four patterns, which are factory method, an abstract factory.
+
+But really, it's this idea of a factory that is the actual pattern.
+
+So what is the motivation for using factories in the first place?
+
+Well, we do get situations where the logic involved in actually creating the object before you even
+
+start using it becomes a bit too complicated, a bit too convoluted.
+
+And unfortunately, there are lots of limitations in terms of the API that you are given for creating
+
+an object, because, for example, the constructor is not particularly descriptive.
+
+For example, you cannot change the name of constructor because the name is mandated by the containing
+
+types.
+
+So the name of the constructor is the name of the type you're in.
+
+You also do not have the ability to have overloads of the constructor with the same sets of arguments
+
+of the same type, just giving them different names.
+
+And that's again, an additional problem that you might have to resolve somehow.
+
+Suddenly, in the case of a constructor, you cannot have two constructors which both take, and that's
+
+simply not possible.
+
+Now, if you do decide to go for the other approach, like, for example, start taking optional parameters
+
+so that you get to kind of specify defaults and customization options inside a single constructor,
+
+this turns into a really messy kind of scenario, a kind of optional parameter hell, where you get
+
+massive constructors full of these optional parameters and nobody can quite figure out which parameters
+
+absolutely must be specified and which can be left as defaults and whether the defaults are internally
+
+consistent with one another.
+
+So it all gets messy and that's why we use the factory design pattern.
+
+So the idea is that if we're talking about individual kind of single statements for object creation,
+
+then we can outsource them to factories.
+
+Now, this is where the difference between the factories and the builder pattern comes in, because
+
+the builder is where you construct an object.
+
+Insteps, you make several different calls.
+
+You might be using a fluent interface.
+
+It's a complicated process.
+
+In the case of a factory, it's more of a process which has lots of different varieties.
+
+Like, for example, let's suppose you're making a bank account.
+
+You can set it up as a checking account or a credit account.
+
+You can have all sorts of different overdraft options and you don't want to stick it into a single constructor,
+
+but you still have this paradigm of a constructor like call.
+
+And this is where you can put, for example, this functionality into a separate function.
+
+And that's what's called the factory method design pattern.
+
+Or you can make a separate class which takes care of the construction of particular objects.
+
+And that is the factory pattern, which is not part of a gang of four.
+
+But I would say that's the key pattern here is the factory.
+
+And finally, you can also create hierarchies of factories corresponding to the hierarchies of objects
+
+that you have somewhere.
+
+So you have hierarchies of factories creating hierarchies of objects, and that is the much more rarely
+
+used abstract factory design pattern.
+
+So the factory design pattern is all about having some sort of component which is responsible solely
+
+for the wholesale and not piecewise creation of objects.
+
+So piecewise creation is something that's left to the builder, but the factory tries to make the entire
+
+object in a single call, basically.
+
+

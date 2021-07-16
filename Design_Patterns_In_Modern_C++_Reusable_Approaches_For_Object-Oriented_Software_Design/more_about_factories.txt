@@ -1,0 +1,34 @@
+What is factory pattern?
+* we would use the factory pattern when a method returns one of several possible classes that share a 
+common super class
+
+* Create a new enemy in a game
+
+*Random number generator picsk a number assigned to a specific enemy
+
+* The factory returns the enemy associateed with that number.
+
+* The class is chosen at run time.
+
+
+we would use factory pattern if we wanted  the program to return one of several possible classes.
+that share a common superclass.
+
+Let's say we have a video game and we wanted to shoot an enemy onto screen at random.
+
+Let's say we create  a random number generator and each potential class is one of the 
+enemy that could pop out of that random number generator.
+
+We could send that number to the factory object and it will return the dynamically created enemy
+
+We want  our program to have dynamic classes choosen at runtime.
+
+
+When to Use a factory Pattern?
+	When you don't know ahead of time what class object you need.
+	When all of the potential classes aer in the same subclass hierarchy.
+	To centralize class selection code
+	When you don't want the user to have to know every subclass
+	To encapsulate object creation
+
+

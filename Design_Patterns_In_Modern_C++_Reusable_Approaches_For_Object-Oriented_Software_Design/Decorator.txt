@@ -1,0 +1,57 @@
+In this section of the course, we're going to take a look at the decorator design pattern.
+
+So what is this all about?
+
+Well, the motivation for using the decorator is the following.
+
+So we want to take an existing object that we already have and we want to give it additional functionality.
+
+Now, the question is, well, how do we give it this additional functionality?
+
+Because sometimes we don't want to just go jump into the object itself and rewrite it.
+
+So there are situations when this is actually impossible.
+
+For example, if you don't have the source code of the original object, there is no way for you to
+
+augment its functionality directly.
+
+But sometimes you do have the access to the source code, but you want to stick to the open closed principle,
+
+so you want to have the extra functionality on the side.
+
+And this also satisfies the single responsibility principle, by the way, because if you have some
+
+new Partho functionality, it could be argued that this is a separate concern and it should be kept
+
+in a separate class.
+
+And this is what gives rise to the decorator design pattern.
+
+Now, of course, when you build a decorator, you need to be able to interact with the existing structure,
+
+the structure that you're actually decorating.
+
+And here C++ gives us two different options for how we can do that.
+
+So the first option, the dynamic decorator, is where you aggregate the decorated object.
+
+So you take the object that you want to decorate.
+
+You stick it in as a reference and then you provide additional functionality.
+
+But you can also conform to some common interface, for example, so as to appear as the original.
+
+And the second option, which is more direct, is to inherit from the decorated object.
+
+And this is possible things to mix in inheritance in C++.
+
+And we're going to take a look at how both of these approaches can be implemented.
+
+So the formal definition of the decorator is it is a pattern which facilitates the addition of behavior
+
+to individual objects.
+
+That's pretty much all there is to it.
+
+

@@ -1,0 +1,89 @@
+In this section of the course, we're going to take a look at the state design pattern, so you might
+
+be wondering, well, hold on, every object or most objects have stayed in their fields.
+
+And so why are we even discussing it?
+
+Why is this a separate design pattern?
+
+Well, in the representation of the Gang of Four, the state design pattern basically suggests that
+
+the state of the system kind of controls the way that it operates.
+
+And it also ties to this idea of state machines or finite state machines.
+
+So what is the motivation behind using the state design pattern?
+
+Well, if you consider an ordinary telephone, for example, then what you can do with a telephone typically
+
+depends on the current state of the telephone as well as the phone line.
+
+So, for example, if the phone is ringing or if you want to make a call, you need to pick up the phone.
+
+That's a requirement to be able to actually respond to somebody or to actually make a new call somewhere.
+
+Now, the phone must be off the hook to actually talk to somebody or make a call.
+
+You cannot be talking to them while the phone is still hanging on the hook and ringing.
+
+Now, if you try calling someone and the line is busy, then you put the handset down.
+
+That's a typical operation of the phone now changes in the state of the system.
+
+So in our case, that would be the phone changes in the state can be explicit.
+
+So we can actually sort of specify, oh, by the way, we're doing this change or these changes can
+
+be in response to an event.
+
+That's the typical observer pattern.
+
+So it is really up to you how your state machine operates.
+
+Some state machines would have explicit controls.
+
+So, for example, you query the user what they want to do and thereby they transition from one state
+
+to another and other systems would run state machines based on events happening externally.
+
+So, for example, since I'm in algo trading, what I typically have is I connect to a stock market
+
+and I listen to events which come from the stock market.
+
+So that is the observer pattern.
+
+And then I have a state machine which moves me from the connecting state to the connected state to the
+
+state where I got some initial market data and so on and so forth.
+
+So the state design pattern is quite simply a pattern where the objects behavior is determined by its
+
+state.
+
+So you have some state and it doesn't have to be a single field or anything.
+
+It can be quite expansive.
+
+And then the behavior which is possible, which is performed by the object, depends on that state.
+
+Now, the results of this paradigm of an object transitioning from one state to another set, for example,
+
+the phone can move from the off hook stage to, let's say, dialing state, for example.
+
+And this happens to be called a transition.
+
+So you transition from one state to another.
+
+And sometimes these transitions are triggered by some event.
+
+So we have this idea of a trigger as an event which causes a transition from one state to another.
+
+Now we have this formalized construct which manages state and transitions from one state to another.
+
+And that formalized construct is called a state machine.
+
+And once again, this is typically a class it can be a class that you yourself build or a class taken
+
+from an extended library.
+
+And we're actually going to look at both of these examples.

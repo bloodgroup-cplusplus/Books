@@ -1,0 +1,20 @@
+objects use other object's fields/ properties/ members through inheritence and composition
+
+composition lets us make compound objects.
+
+	e.g., a mathematical expression compsed of simple expressions; or
+		a grouping of shapes that consists of several shapes.
+
+
+Composite design pattern is used to treat both single (scalar) and composite objects uniformly
+
+
+	i.e., Foo and Collection< Foo> have compositions
+
+
+
+
+Composite = A mechanism for treating individual (scalar) objects and compositions of objects in a unifrom manner.
+
+
+

@@ -1,0 +1,29 @@
+Motivation:
+Let's imagine you are working for volskwagan
+Someone behaves unethically 
+So who takes the blame?
+	* Employee
+	* Manager 
+If the manager knew about this it would be the department policy to know about it.
+This is typical illustration for chain of responsibility.
+
+Due to unethical behaviour from one percent it effects everyone all throughout the chain.
+
+Say you click on a graphical element on a form ( a button )
+	* Button handles it, stops further processing
+	* The event doesn't go up the chain
+	* Say the button is part of group box.
+	* Window itself handle the event
+	* So this is a chain of responsiblitly
+	* say we have CCG Computer Game
+	*And creature has attack and defencse values
+	* Those can be boosted by other cards
+	* This is chain of  responsibliity
+
+
+
+Chain of Responsiblitly:
+	A chain of components who all get a chance to process a command or a query, optionally haveing default processing implmentation and an ability to terminate the processing chain.
+
+
+

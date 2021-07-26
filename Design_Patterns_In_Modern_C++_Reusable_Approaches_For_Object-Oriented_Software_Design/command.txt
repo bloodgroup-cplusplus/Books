@@ -1,0 +1,39 @@
+Motivation:
+	Ordinary c++ statements are perishable
+		Cannot undo a field/ property assignment
+		Cannot directily serialize a sequence of actions(calls)
+		We want that for auditing our actions.
+		What we want to do is 
+
+	We want an object that represents an operation
+		X should change its field Y to the value Z
+		X should do W()
+
+	Uses: GUI commands, multi-level undo/redo, macro recording
+	and morqE
+	
+Command : It is an object which represents an instruction to perform
+a particualr action.  Contains all the information necessary for the
+action to be taken.
+
+
+Command Query Seperation
+
+	Command= asking for an action or change ( e.g., please set your attack value to 2).
+
+	We don't get a result at the end of it
+
+	Query= Asking for information (e.g., please give me your attack vvalue).
+
+	CQS= done in distributed databases ( having seperate means of sending commands and queries)
+
+	There are lot of variations . 
+
+	In Gang of Four context, both commands and queries are represetnted with the Command Design Pattern.
+
+
+	Query is a manifestation of command design pattern.
+
+	command design pattern encapsulates both command and query
+
+ 

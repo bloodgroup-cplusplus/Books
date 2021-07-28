@@ -1,0 +1,26 @@
+/* communication between components in abstracted way
+ * components may go in and out of a system at any time
+ * Chat room participants
+ * Players in online game
+ * Omegle
+ *
+ *
+ 
+It makes no sense for them to have direct refrences to one another
+	* Those refrences may go dead
+	*
+	*
+	*
+Solution : have them all refer to somoe central component that facilitiates communication
+
+
+
+MEDIATOR= A component that facilitates communication between other components without them necessarily beeing aware of each other or having direct(refrence) access to each other.
+
+
+//Chat rooom is a classic example of mediator
+
+*/
+
+
+

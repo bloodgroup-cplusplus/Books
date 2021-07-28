@@ -1,0 +1,29 @@
+Interpreter is everywhere 
+when we compile a language or when we use an interpreted language 
+It's a seperate branch of computer science which deals with constructing parsers
+
+Textual input needs to be processed
+	e.g., turned into OOP structures
+
+Some Examples of 
+	Programming language compilers, and IDES 
+	behind the scenes is interpreter ( validitiy of certain structures)
+	HTML, XML and similar ( has to be interpreted)
+	Numeric expressions (3+4/5) 
+	Virtual machine of some kind 
+	Interpreter Pattern
+	Regular Expressions
+	all applications 
+	Regular expressions are state machines
+	The end result is turned into state machines 
+
+Turing strings into oop based structres in a complicated process
+The languages that we work nowdays is complicated
+
+
+Interpreter:
+	A component that processes structured text data. Does so by turning it into 
+	seperate leixcal tokens (lexing) and then interpreting sequences of said tokens(parsing).
+
+
+

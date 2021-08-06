@@ -1,0 +1,22 @@
+The observer design pattern
+
+Motivation
+* We need to be informed when certain things happens
+	* example object's field changes
+	* Some external event occurs
+
+* We want to listen to events and notified when they occur
+
+
+* Terminology:
+	* Event and the subscriber.
+	* Parallel terminology like ( sigal and slot in (Boost, Qt, et.)
+	* Like a traffic light indication.
+	* slot handles the signal when signal is fired.
+	* Boost signals
+	* Events and subscribes to events
+
+
+
+ObServer:
+	An observer is an object that wishes to be informed about events happeing in the system. The entity generating the events is called observable.

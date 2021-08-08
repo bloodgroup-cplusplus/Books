@@ -1,0 +1,26 @@
+Facade:
+	Exposing several components through a single interface.
+	Making things convinient to end user.
+
+
+Motivation:
+	Balancing  complexity and presentation/usability
+	Typical Home 
+		It has many subsystesm (electrical, santiaion)
+		Complex internal structre (e.g., floor layers)
+		End user is not exposed to internals.
+		We don't open the floors when we buy house.
+		
+
+	Same with software!
+		Consumers of api just want something to work with
+		Many systems workng to provide flexibility but..
+		API consumers want it to just work
+
+		we don't need to worry about buffers buffer overruns.
+		We only work with public interface.
+
+
+Facade: Provides a simple, easy to understand/ user interface over a large and 
+sophisticated body of code.
+

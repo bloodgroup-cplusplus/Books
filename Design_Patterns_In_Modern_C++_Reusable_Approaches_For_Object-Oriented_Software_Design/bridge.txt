@@ -1,0 +1,16 @@
+The bridge design pattern is connecting two components
+
+The bridge prevents a 'Cartesian Product' complexity explosion
+
+Example:
+	Base class ThreadScheduler
+	Can be preemptive or cooperative
+	Can run on Windows or UNix
+
+
+
+we don't rely on inhertitence 
+
+
+Bridge : A mechanism that decouples an interface ( hierarchy) from and implemetation (hierarchy)
+

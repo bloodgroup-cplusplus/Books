@@ -1,0 +1,25 @@
+Adapter : Getting the interface you want from the interface you have
+
+Adapter is same as the power adapter.
+
+Electrical devices have different power ( interface) requirements
+
+Voltage (5V, 220 V)
+
+Socket/ Plug type (Europe, UK, USA)
+
+We cannot modify our gadgets to support every possile ineterface.
+
+
+	Some support possible
+	(e.g., 120/ 220v)
+
+Thus, we use a special device ( an adapter) to give us the interface we require from the interface we have
+
+
+
+Adapter : A construt which adapts an existing interface X to conform to the requierd interface Y.
+
+
+Connecting two interfaces.
+

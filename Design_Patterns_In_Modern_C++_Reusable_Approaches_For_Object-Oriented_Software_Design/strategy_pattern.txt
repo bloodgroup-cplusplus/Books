@@ -1,0 +1,25 @@
+Strategy Pattern
+
+* Simplest Pattern
+
+* It's about using composition rather than inheritence.
+
+* Official Def : Defines a family of algorithms ( when we are using strategy we have family of algorithms ) each of them are interchangable.
+
+* We can plug and play in case of stragtegy pattern. Strategy lets the algorithm vary from the  client using it.
+
+
+* Whoever is using the algorithm are the client. The client doesn't have to vary if the algorithm varies.
+
+
+* To change the algorithm we need not need to change the client
+
+
+* in the example there is a duck class
+
+
+
+*  the subclasses ducks are responsible for implementing own version of display method.
+
+
+* 

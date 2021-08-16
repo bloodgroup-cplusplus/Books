@@ -1,0 +1,56 @@
+f we've got a bunch of classes and there are bunch of interactions between
+those things.
+
+some level of arbitary connections
+
+
+If we have a client ( a user of a particular piece of code)
+
+
+If the client wants to use these in particular manner
+
+
+we can have a lot of classes that each do one thing only ( singleton)
+
+
+there are lots of different classes.
+
+Depending on the complexity of classes
+
+
+A bunch of classes you would use to seperate things into classes.
+
+Have this high level of abstrcation.
+
+
+In order to do any useful  work.
+
+In order to do any compilation of problem we could use a lot of classes at the same time.
+
+
+In order to instatntiate these things we can pass it through it.
+
+
+Depending on the scenario we might have lot of wiriings.
+
+
+Depending on the model it might be non-trival to use some data structures.
+
+what is facade ?
+
+It's fine to do complex wiring there is an easy way of doing it.
+
+Facade is the exterior of the builidng.
+
+House is a lot more than a facade
+
+Underneath the facade we have a lot of plumming.
+
+
+We create a facade. Instaed we create a facade which interacts with all of the wiring.
+
+The facade does all of the complex wiring with the
+
+the point is that we construct a facade that interacts with object and simplifies the interaction with you.
+
+If we imagine we have multiple clients.

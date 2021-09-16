@@ -8,6 +8,6 @@ Compared to std::unique_ptr, std::shared_ptr objects are typically twice as big,
 Default resource destruction is via delete but custom deleters are supported the type of the deleter has no effect on the type of std::shared_ptr.
 
 
-Avoid creating std::shared_ptrs, from variables of raw pointer type.
+Avoid creating std::shared_ptrs, from variables of raw pointer type. Careful in recording the type of the variable
 
 

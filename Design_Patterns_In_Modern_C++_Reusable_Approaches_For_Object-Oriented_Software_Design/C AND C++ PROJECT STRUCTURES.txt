@@ -6,7 +6,7 @@
         * so "#include<name_of_the_project/header_file.h> " will make it modular
         * if it's a header only library then they don't have the include folder
         * Everything goes into the src
-        *Public Libraries go in the include
+        *Public Libraries go in the include.....
         
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
